@@ -10,15 +10,15 @@ published: true
 published_at: "2023-08-21 15:06"
 ---
 
-# 概要
+## 概要
 
-Web アクセシビリティを考慮したコーディングをするための個人的備忘録です。
+Web アクセシビリティを考慮したコーディングをするための個人的備忘録。
 
-# `img`タグ
+## `img`タグ
 
 ### alt 属性
 
-`img`タグには alt 属性を必ず設定する。
+`img`タグには alt 属性を設定する。
 
 :::message
 
@@ -26,15 +26,15 @@ Web アクセシビリティを考慮したコーディングをするための�
 - 意味をもたない画像の場合は空の文字列で OK（省略はしない）
   :::
 
-alt 属性の内容についてはこちらの記事が参考になります。
-https://web-de-asobo.net/2023/03/14/html-img-alt/
+alt 属性の内容についてはこちらの記事が参考になる。
+<https://web-de-asobo.net/2023/03/14/html-img-alt/>
 
-# WAI-ARIA
+## WAI-ARIA
 
 WAI-ARIA には、ロール（Role）、プロパティ（Property）、ステート（State）の 3 つの機能があり、MDN にわかりやすくまとめられている。
-https://developer.mozilla.org/ja/docs/Learn/Accessibility/WAI-ARIA_basics#wai-aria_%E3%81%A3%E3%81%A6%E4%BD%95%EF%BC%9F
+<https://developer.mozilla.org/ja/docs/Learn/Accessibility/WAI-ARIA_basics#wai-aria_%E3%81%A3%E3%81%A6%E4%BD%95%EF%BC%9F>
 
-## `role`属性
+### `role`属性
 
 `role`とは日本語で「役割」を意味する。
 `role`属性を付与することで Web ページに「これはボタンです」など、要素の役割を認識してもらうようにすることができる。
@@ -43,11 +43,11 @@ https://developer.mozilla.org/ja/docs/Learn/Accessibility/WAI-ARIA_basics#wai-ar
 
 次の記事が参考になる。
 
-https://zenn.dev/yusukehirao/articles/e3512a58df58fd
+<https://zenn.dev/yusukehirao/articles/e3512a58df58fd>
 
-https://qiita.com/s-kato/items/fc5df9955698222f5436
+<https://qiita.com/s-kato/items/fc5df9955698222f5436>
 
-## `aria-label`属性
+### `aria-label`属性
 
 `aria-label`に指定した値がスクリーンリーダーにそのまま読み上げられる。
 `aria-label`は次のような要素に指定する。
@@ -72,13 +72,13 @@ https://qiita.com/s-kato/items/fc5df9955698222f5436
 </a>
 ```
 
-## `aria-hidden`属性
+### `aria-hidden`属性
 
 スクリーンリーダーに無視してもらいたい要素につける属性
 
 `svg`や`span`タグで SNS シェアボタン等を実装するときは装飾画像として扱うため`aria-hidden="true"`にしたり、ハンバーガーボタンをクリックしないと表示されないメニューなど、初期状態で要素が非表示であることをブラウザに伝えるために`aria-hidden="true"`を付与して、メニューの開閉と連動して false と切り替える。
 
-# モーダル
+## モーダル
 
 モーダルはユーザーの操作性に大きく関わる要素で、アクセシビリティに配慮した実装が重要。
 
@@ -86,25 +86,25 @@ Radix UI、Micromodal.js などの Web アクセビリティ(a11y)に対応し�
 
 ※モーダルを実装する際は、基本的なアクセシビリティ面をクリアでき、制作・開発コストを下げるためにもプラグインやライブラリを積極的に取り入れる方が楽。
 
-## esc キーでモーダルが閉じる
+### esc キーでモーダルが閉じる
 
 ハンバーガーメニューなども同じですが、モーダルは esc キーで閉じれるようにする。
 `dialog`要素の登場により、従来の JavaScript での制御を省略することができる。
 
-## フォーカストラップ
+### フォーカストラップ
 
 モーダルを開いているときに tab キーを押すと、モーダル内のコンテンツでフォーカスが循環するように実装する必要がある。
 `dialog`要素で実装することでこの問題は解決する。
 
 次の記事で詳しく解説されている。
-https://ics.media/entry/220620/
+<https://ics.media/entry/220620/>
 
-## オーバーレイをクリックしてモーダルが閉じる
+### オーバーレイをクリックしてモーダルが閉じる
 
-諸説あるようだが、モーダルを開いている時にモーダル以外の要素（オーバーレイの部分）をクリックしたときはモーダルが閉じるようにすべきだと考えている。
-この機能は`dialog`要素の機能には無いので、自作する必要がある。
+モーダルを開いている時にモーダル以外の要素（オーバーレイの部分）をクリックしたときはモーダルが閉じるよう挙動。
+これは`dialog`要素の機能には無いので、自作する必要がある。
 
-# スマホで`hover`を無効にする
+## スマホで`hover`を無効にする
 
 通常の`hover`だと、スマホ（タッチデバイス）の場合はフォーカス状態のときにあたります。つまり、**タッチした後もホバー時のスタイルがそのまま残り続ける**ということになる。
 
@@ -133,9 +133,9 @@ module.exports = {
 };
 ```
 
-https://zenn.dev/kagan/articles/css-hover-style
+<https://zenn.dev/kagan/articles/css-hover-style>
 
-# 大文字英語のマークアップ
+## 大文字英語のマークアップ
 
 大文字の英字をそのままマークアップすると、スクリーンリーダーで読み上げ時に適切に発音されない。
 下記のようにマークアップすると「エービーオーユーティー」と読み上げられる。
@@ -144,8 +144,8 @@ https://zenn.dev/kagan/articles/css-hover-style
 <p>ABOUT</p>
 ```
 
-そのため、上記の場合は「About」と記述し CSS の`text-transform: uppercase`を指定して大文字表記にする。（いつも忘れがち）
+そのため、上記の場合は「About」と記述し CSS の`text-transform: uppercase`を指定して大文字表記にする。
 
-# 参考記事
+## 参考記事
 
-https://lifull.github.io/accessibility-guidelines/
+<https://lifull.github.io/accessibility-guidelines/>
