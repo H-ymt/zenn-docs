@@ -1,18 +1,18 @@
 # zenn-docs
 
-👇 新しい記事を作成する
+🚀 Create new article
 
 ```sh
 npx zenn new:article
 ```
 
-👇 新しい本を作成する
+🔥 Create new book
 
 ```sh
 npx zenn new:book
 ```
 
-👇 投稿をプレビューする
+👻 Preview your post
 
 ```sh
 npx zenn preview
