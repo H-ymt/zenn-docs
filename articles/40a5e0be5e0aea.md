@@ -180,8 +180,6 @@ https://ics.media/entry/220620/
 }
 ```
 
-https://zenn.dev/kagan/articles/css-hover-style
-
 ### `:hover` だけでは何が問題なのか
 
 通常の`hover`ではスマホやタブレット等のタッチデバイスでもタッチした際も hover 時のスタイルが適用されて、再度タッチするまで hover スタイルが残り続けてしまう。
@@ -262,14 +260,21 @@ https://zenn.dev/kagan/articles/css-hover-style
 }
 ```
 
-ちなみに Tailwind CSS の場合は下記で一括指定が可能
+Tailwind CSS の場合は下記で一括指定が可能。
+これまで同様に`hover:`と書くだけで上記のセレクタが適用される。
 
 ```js:tailwind.config.js
-module.exports = {
-  future: {
-    hoverOnlyWhenSupported: true,
-  },
-};
+const plugin = require('tailwindcss/plugin')
+
+/** @type {import('tailwindcss').Config} */
+export default {
+  plugins: [
+    plugin(function ({ addVariant }) {
+      // override default hover variant
+      addVariant('hover', '@media(any-hover:hover){ &:where(:any-link, :enabled, summary):hover }')
+    }),
+  ],
+}
 ```
 
 ## 大文字英語のマークアップ
@@ -295,3 +300,7 @@ module.exports = {
 ## 参考記事
 
 https://lifull.github.io/accessibility-guidelines/
+
+https://zenn.dev/kagan/articles/css-hover-style
+
+https://zenn.dev/kagan/articles/tailwind-css-custom-hover
