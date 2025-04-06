@@ -75,7 +75,7 @@ zi
 
 ![](/images/e4a07ca71fd1cb/zi-command.png)
 
-`zi next`で next を含むディレクトリを検索することもできる
+または、`zi next`で next を含むディレクトリを検索することもできる（next の部分は任意）
 ![](/images/e4a07ca71fd1cb/zi-command-next.png)
 
 ### z - コマンド
